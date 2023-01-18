@@ -75,6 +75,7 @@
 				</configuration>
 			</plugin>
 		</plugins>
+		<finalName>shop-service</finalName>
 	</build>
 
 </project>
