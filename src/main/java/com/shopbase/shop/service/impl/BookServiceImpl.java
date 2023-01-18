@@ -12,7 +12,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
-
+@Slf4j
 @Service
 @Data
 @RequiredArgsConstructor
@@ -23,18 +23,18 @@ public class BookServiceImpl implements BookService {
 
     @Override
     public Page<Book> getAllBoks(int index, int size) {
+        log.info("method getAllBooks start");
         return bookRepository.findAll(PageRequest.of(index,size));
     }
 
     @Override
     public void saveBook(BookRequestDto requestDto) {
         try {
-
+            log.info("method saveBook start");
             Book book = modelMapper.map(requestDto,Book.class);
             bookRepository.save(book);
-
+            log.info("method saveBook success");
         } catch (Exception e) {
-
             throw e;
         }
     }
